@@ -3,6 +3,7 @@ import { View, ScrollView, StyleSheet } from 'react-native';
 import PetCard from '../components/PetCard';
 import BottomNavigation from '../components/BottomNavigation';
 
+
 const pets = [
   {
     nome: 'Logan',

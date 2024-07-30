@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Image, SafeAreaView, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Image, SafeAreaView, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import CustomTextInput from '../components/CustomTextInput';
 
 const SignIn = ({ navigation }) => {
@@ -25,8 +24,7 @@ const SignIn = ({ navigation }) => {
       .then(json => {
         console.log(json);
         if (json.mensagem === 'Usuário válido') {
-          navigation.navigate('Home', {
-          });
+          navigation.navigate('Home');
         } else {
           console.log("Erro: Usuário inválido");
         }
@@ -38,16 +36,16 @@ const SignIn = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
-      <Image source={require('../../assets/LogoAdog.png')} style={styles.logo} />
-      <CustomTextInput label="E-mail" placeholder="Digite seu e-mail" value={email} onChangeText={setEmail} />
-      <CustomTextInput label="Senha" placeholder="Digite sua senha" value={senha} onChangeText={setSenha} secureTextEntry />
-      <TouchableOpacity onPress={VerificarLogin}>
-        <Text style={styles.button}>
-          Entrar
-        </Text>
-      </TouchableOpacity>
-    </ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <Image source={require('../../assets/LogoAdog.png')} style={styles.logo} />
+        <CustomTextInput label="E-mail" placeholder="Digite seu e-mail" value={email} onChangeText={setEmail} />
+        <CustomTextInput label="Senha" placeholder="Digite sua senha" value={senha} onChangeText={setSenha} secureTextEntry />
+        <TouchableOpacity onPress={verificarLogin}>
+          <Text style={styles.button}>
+            Entrar
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -59,26 +57,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    borderWidth: 1,
-    borderColor: 'black',
-    width: '90%',
-    height: '90%',
-    position: 'absolute',
-    borderRadius: 20,
+  },
+  scrollView: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   logo: {
     width: 100,
     height: 100,
-  },
-  input: {
-    color: "black",
-    fontFamily: 'times',
-    borderRadius: 30,
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    textAlign: 'center',
   },
   button: {
     margin: 10,
@@ -89,7 +76,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
   },
-  
 });
 
 export default SignIn;
