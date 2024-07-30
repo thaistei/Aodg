@@ -38,6 +38,21 @@ app.get('/usuarios', (req, res) => {
     execSQLQuery("SELECT * from Usuario", id, res);
 });
 
+app.get('/pets', (req, res) => {
+    const id = [];
+    execSQLQuery("SELECT * from Pet", id, res);
+});
+
+app.get('/racas', (req, res) => {
+    const id = [];
+    execSQLQuery("SELECT * from Raca", id, res);
+});
+
+app.get('/parceiros', (req, res) => {
+    const id = [];
+    execSQLQuery("SELECT * from Parceiro", id, res);
+});
+
 app.post('/usuarios', (req, res) => {
     console.log('Recebendo requisição POST em /usuarios');
     const { email, nomeUsuario, cpf, telefoneUsuario, senha, rua, cidade, bairro, numero, tipo, foto, data_nascimento, descricao } = req.body;
@@ -45,6 +60,72 @@ app.post('/usuarios', (req, res) => {
 
     const id = [email, nomeUsuario, cpf, telefoneUsuario, senha, rua, cidade, bairro, numero, tipo, foto, data_nascimento, descricao];
     const query = `INSERT INTO Usuario (email, nomeUsuario, cpf, telefoneUsuario, senha, rua, cidade, bairro, numero, tipo, foto, data_nascimento, descricao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+    execSQLQuery(query, id, res);
+});
+
+app.post('/pets', (req, res) => {
+    console.log('Recebendo requisição POST em /pets');
+    const { nomePet, tipoPet, raca, sexo, porte, dataNascimento } = req.body;
+    console.log('Dados recebidos:', req.body);
+
+    const id = [nomePet, tipoPet, raca, sexo, porte, dataNascimento];
+    const query = `INSERT INTO Pet (nomePet, tipoPet, raca, sexo, porte, dataNascimento) VALUES (?, ?, ?, ?, ?, ?)`;
+
+    execSQLQuery(query, id, res);
+});
+
+app.post('/racas', (req, res) => {
+    console.log('Recebendo requisição POST em /racas');
+    const { nomeRaca, porteRaca, comportamento, quantPelo } = req.body;
+    console.log('Dados recebidos:', req.body);
+
+    const id = [nomeRaca, porteRaca, comportamento, quantPelo];
+    const query = `INSERT INTO Raca (nomeRaca, porteRaca, comportamento, quantPelo) VALUES (?, ?, ?, ?)`;
+
+    execSQLQuery(query, id, res);
+});
+
+app.post('/parceiros', (req, res) => {
+    console.log('Recebendo requisição POST em /parceiros');
+    const { nomeParceiro, tipoParceiro, telefoneParceiro, local_parceiro } = req.body;
+    console.log('Dados recebidos:', req.body);
+
+    const id = [ nomeParceiro, tipoParceiro, telefoneParceiro, local_parceiro];
+    const query = `INSERT INTO Parceiro (nomeParceiro, tipoParceiro, telefoneParceiro, local_parceiro) VALUES (?, ?, ?, ?)`;
+
+    execSQLQuery(query, id, res);
+});
+
+app.post('/anuncios', (req, res) => {
+    console.log('Recebendo requisição POST em /anuncios');
+    const { tipoAnuncio, dataAnuncio } = req.body;
+    console.log('Dados recebidos:', req.body);
+
+    const id = [ tipoAnuncio, dataAnuncio ];
+    const query = `INSERT INTO Parceiro (tipoAnuncio, dataAnuncio) VALUES (?, ?, ?, ?)`;
+
+    execSQLQuery(query, id, res);
+});
+
+app.post('/interesses', (req, res) => {
+    console.log('Recebendo requisição POST em /interesses');
+    const { idUsuario, idPet } = req.body;
+    console.log('Dados recebidos:', req.body);
+
+    const id = [ idUsuario, idPet ];
+    const query = `INSERT INTO Parceiro (idUsuario, idPet) VALUES (?, ?)`;
+
+    execSQLQuery(query, id, res);
+});
+
+app.post('/interesses', (req, res) => {
+    console.log('Recebendo requisição POST em /interesses');
+    const { idUsuario, idPet } = req.body;
+    console.log('Dados recebidos:', req.body);
+
+    const id = [ idUsuario, idPet ];
+    const query = `INSERT INTO Parceiro (idUsuario, idPet) VALUES (?, ?)`;
 
     execSQLQuery(query, id, res);
 });
