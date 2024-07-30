@@ -12,7 +12,7 @@ const SignIn = ({ navigation }) => {
     var userObj = { email: email, senha: senha };
     var jsonBody = JSON.stringify(userObj);
     console.log(jsonBody);
-    fetch('https://tet2-thiago.glitch.me/login', {
+    fetch('http://localhost:3001/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    width: '100%',
   },
   scrollView: {
     flexGrow: 1,
@@ -73,8 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F3BD0F',
     borderRadius: 20,
     textAlign: 'center',
-    fontWeight: 'bold',
-    color: '#fff',
+    color: 'white',
   },
 });
 

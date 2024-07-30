@@ -19,22 +19,23 @@ const CustomTextInput = ({ label, placeholder, value, onChangeText, secureTextEn
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 20, // Espaço entre os campos
+    marginBottom: 20, 
   },
   label: {
     fontSize: 16,
     marginBottom: 8,
-    color: '#333', // Cor do texto do rótulo
+    color: '#333', 
   },
   input: {
     color: "black",
-    fontFamily: 'times',
     borderRadius: 30,
     height: 40,
     margin: 12,
     borderWidth: 1,
+    borderColor: '#ccc',
     padding: 10,
     textAlign: 'center',
+    width: '80%',
   },
 });
 

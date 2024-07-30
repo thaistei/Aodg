@@ -31,7 +31,7 @@ const SignUp = ({ navigation }) => {
     const jsonBody = JSON.stringify(userObj);
     console.log(jsonBody);
 
-    fetch('https://tet2-thiago.glitch.me/usuarios', {
+    fetch('http://localhost:3001/usuarios', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

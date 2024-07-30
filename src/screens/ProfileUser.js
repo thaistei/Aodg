@@ -5,15 +5,11 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
 
-const pet = {
-  nome: 'Pipoca',
-  idade: '3 meses',
-  peso: '7 Kg',
-  porte: 'Grande',
-  raca: 'Golden Retriever',
-  sexo: 'Fêmea',
+const user = {
+  nome: 'Thiago',
+  idade: '17 anos',
   localizacao: 'Cataguases-MG',
-  temperamento: 'Muito dócil',
+  descricao: 'Vive em casa, possui outros pets, fica em casa 8 horas por dia.',
   imagens: [
     require('../../assets/Pipoca1.jpg'), 
     require('../../assets/Pipoca2.jpg'),
@@ -21,33 +17,27 @@ const pet = {
   ],
 };
 
-const ProfilePet = () => {
+const ProfileUser = () => {
   const renderImage = ({ item }) => (
-    <Image source={item} style={styles.petImage} />
+    <Image source={item} style={styles.userImage} />
   );
 
   return (
     <View style={styles.container}>
       <View style={styles.carouselContainer}>
         <Carousel
-          loop
+          data={user.imagens}
+          renderItem={renderImage}
           width={width * 0.8}
           height={200}
-          autoPlay={true}
-          data={pet.imagens}
-          renderItem={renderImage}
           style={styles.carousel}
         />
       </View>
 
       <View style={styles.infoContainer}>
-        <Text style={styles.petName}>{`${pet.nome}, ${pet.idade}`}</Text>
-        <Text style={styles.petDetail}>• Pesa {pet.peso}</Text>
-        <Text style={styles.petDetail}>• Porte {pet.porte}</Text>
-        <Text style={styles.petDetail}>• {pet.raca}</Text>
-        <Text style={styles.petDetail}>• {pet.sexo}</Text>
-        <Text style={styles.petDetail}>• Residente de {pet.localizacao}</Text>
-        <Text style={styles.petDetail}>• {pet.temperamento}</Text>
+        <Text style={styles.userName}>{`${user.nome}, ${user.idade}`}</Text>
+        <Text style={styles.userDetail}>• Residente de {user.localizacao}</Text>
+        <Text style={styles.userDetail}>• {user.descricao}</Text>
       </View>
 
       <View style={styles.navigationContainer}>
@@ -77,7 +67,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
   },
-  petImage: {
+  carousel: {
+    borderRadius: 10,
+  },
+  userImage: {
     width: width * 0.8,
     height: 200,
     borderRadius: 10,
@@ -90,12 +83,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#000080',
   },
-  petName: {
+  userName: {
     fontWeight: 'bold',
     fontSize: 20,
     marginBottom: 5,
   },
-  petDetail: {
+  userDetail: {
     fontSize: 16,
     marginVertical: 2,
   },
@@ -106,7 +99,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfilePet;
+export default ProfileUser;
+
 
 
 
