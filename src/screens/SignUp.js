@@ -31,7 +31,7 @@ const SignUp = ({ navigation }) => {
     const jsonBody = JSON.stringify(userObj);
     console.log(jsonBody);
 
-    fetch('http://localhost:3001/usuarios', {
+    fetch('http://localhost:3001;', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +52,6 @@ const SignUp = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsHorizontalScrollIndicator={false}>
-        <Image source={require('../../assets/LogoAdog.png')} style={styles.logo} />
         <CustomTextInput label="Nome" placeholder="Digite seu nome" value={nome} onChangeText={setNome} />
         <CustomTextInput label="E-mail" placeholder="Digite seu e-mail" value={email} onChangeText={setEmail} />
         <CustomTextInput label="Data de Nascimento" placeholder="Digite sua data de nascimento" value={data} onChangeText={setDataNascimento} />
@@ -78,16 +77,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    borderWidth: 1,
-    borderColor: 'black',
-    width: '90%',
-    height: '90%',
-    position: 'absolute',
-    borderRadius: 20,
-  },
-  logo: {
-    width: 100,
-    height: 100,
+    width: '100%',
+    
   },
   button: {
     margin: 10,
