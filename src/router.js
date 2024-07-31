@@ -2,11 +2,12 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SignUp from './screens/SignUp';
-import SignIn from './screens/SignIn'; // Certifique-se de ter esse import
+import SignIn from './screens/SignIn'; 
 import Home from './screens/Home';
 import ProfilePet from './screens/ProfilePet'; 
 import Nots from './screens/Notfications'
-import { HeaderLogo, HeaderRightIcon } from './components/HeaderComponents'; // Ajuste o caminho conforme necessário
+import { HeaderLogo, HeaderRightIcon } from './components/Header'; 
+import SplashScreen from './screens/SplashScreen';
 
 const Stack = createStackNavigator();
 
@@ -20,7 +21,12 @@ const defaultScreenOptions = {
 function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={defaultScreenOptions}>
+      <Stack.Navigator initialRouteName="Splash" screenOptions={defaultScreenOptions}>
+        <Stack.Screen 
+          name="splash" 
+          component={SplashScreen} 
+          options={{ headerShown: false }} 
+        /> 
         <Stack.Screen 
           name="signup" 
           component={SignUp} 
@@ -40,7 +46,7 @@ function Routes() {
           name="notifications" 
           component={Nots} 
           options={{
-            headerRight: () => <HeaderRightIcon name="bell" onPress={() => {}} />,
+            headerRight: () => <HeaderRightIcon name="arrow-left" onPress={() => {}} />,
           }}
         />
         <Stack.Screen

@@ -1,27 +1,56 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons, Feather } from '@expo/vector-icons';
 
-const BottomNavigation = ({ navigation }) => {
+import Home from '../screens/Home'; 
+import Search from '../screens/SearchScreen';
+import AddPet from '../screens/AddPet';
+import Favorites from '../screens/Favorites';
+import Settings from '../screens/Settings';
+
+const Tab = createBottomTabNavigator();
+
+const BottomNavigation = () => {
   return (
-    <View style={styles.container}>
-      <Ionicons name="paw-outline" size={24} color="black" onPress={() => navigation.navigate('home')} />
-      <Feather name="search" size={24} color="black" />
-      <Ionicons name="add-circle-outline" size={24} color="black" />
-      <Ionicons name="star-outline" size={24} color="black" />
-      <Feather name="menu" size={24} color="black" />
-    </View>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = focused ? 'paw' : 'paw-outline';
+            return <Ionicons name={iconName} size={size} color={color} />;
+          } else if (route.name === 'Search') {
+            iconName = focused ? 'search' : 'search';
+            return <Ionicons name={iconName} size={size} color={color} />;
+          } else if (route.name === 'AddPet') {
+            iconName = focused ? 'add-circle' : 'add-circle-outline';
+            return <Ionicons name={iconName} size={size} color={color} />;
+          } else if (route.name === 'Favorites') {
+            iconName = focused ? 'star' : 'star-outline';
+            return <Ionicons name={iconName} size={size} color={color} />;
+          } else if (route.name === 'Settings') {
+            iconName = focused ? 'settings' : 'menu';
+            if (iconName === 'menu') {
+              return <Feather name={iconName} size={size} color={color} />;
+            } else {
+              return <Ionicons name={iconName} size={size} color={color} />;
+            }
+          }
+        },
+        tabBarActiveTintColor: 'blue',
+        tabBarInactiveTintColor: 'gray',
+      })}
+    >
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Search" component={Search} />
+      <Tab.Screen name="AddPet" component={AddPet} />
+      <Tab.Screen name="Favorites" component={Favorites} />
+      <Tab.Screen name="Settings" component={Settings} />
+    </Tab.Navigator>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 15,
-    borderTopWidth: 1,
-    borderColor: '#ccc',
-  },
-});
-
 export default BottomNavigation;
+
+

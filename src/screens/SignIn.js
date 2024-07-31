@@ -12,7 +12,7 @@ const SignIn = ({ navigation }) => {
     var userObj = { email: email, senha: senha };
     var jsonBody = JSON.stringify(userObj);
     console.log(jsonBody);
-    fetch('http://localhost:3001/login', {
+    fetch('http://localhost:3001;', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +37,6 @@ const SignIn = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
-        <Image source={require('../../assets/LogoAdog.png')} style={styles.logo} />
         <CustomTextInput label="E-mail" placeholder="Digite seu e-mail" value={email} onChangeText={setEmail} />
         <CustomTextInput label="Senha" placeholder="Digite sua senha" value={senha} onChangeText={setSenha} secureTextEntry />
         <TouchableOpacity onPress={verificarLogin}>
@@ -63,10 +62,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  logo: {
-    width: 100,
-    height: 100,
   },
   button: {
     margin: 10,

@@ -3,7 +3,7 @@ import { Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
 const HeaderLogo = () => (
-  <Image source={require('../assets/LogoAdog.png')} style={styles.logo} />
+  <Image source={require('../../assets/LogoAdog.png')} style={styles.logo} />
 );
 
 const HeaderRightIcon = ({ name, onPress }) => (
