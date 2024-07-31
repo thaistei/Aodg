@@ -23,7 +23,7 @@ function Routes() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Splash" screenOptions={defaultScreenOptions}>
         <Stack.Screen 
-          name="Splash" 
+          name="splash" 
           component={SplashScreen} 
           options={{ headerShown: false }} 
         /> 
