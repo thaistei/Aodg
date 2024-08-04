@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import { View, Text, Button, Picker, Slider, StyleSheet, TouchableOpacity } from 'react-native';
 import RadioButton from 'react-native-radio-button';
+import { Feather, Ionicons } from '@expo/vector-icons';
+
+const HeaderLogo = () => (
+  <Image source={require('../../assets/LogoAdog.png')} style={styles.logo} />
+);
+
+const HeaderRightIcon = ({ name, onPress }) => (
+  <TouchableOpacity style={styles.headerRight} onPress={onPress}>
+    <Feather name={name} size={24} color="white" />
+  </TouchableOpacity>
+);
+
 
 
 export default function PetFilter() {
@@ -115,4 +127,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#00f',
     color: '#fff',
   },
+  
 });

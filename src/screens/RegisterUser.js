@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   logoContainer: {
-    backgroundColor: '#00008B', // Azul escuro
+    backgroundColor: '#00008B', 
     width: '100%',
     paddingVertical: 20,
     alignItems: 'center',
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#00008B', // Azul escuro
+    backgroundColor: '#00008B', 
     borderRadius: 30,
     paddingVertical: 15,
     paddingHorizontal: 20,
